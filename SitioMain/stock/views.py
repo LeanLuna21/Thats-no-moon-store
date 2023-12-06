@@ -5,3 +5,11 @@ from django.http import HttpResponse
 from stock.models import Producto
 
 # Create your views here.
+def listar_sabers(request):
+    return render(request, './sabers.html')
+
+def listar_crystals(request):
+    return render(request, './crystals.html')
+
+def listar_componentes(request):
+    return render(request, './componentes.html')

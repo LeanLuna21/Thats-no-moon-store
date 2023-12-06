@@ -6,15 +6,14 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     precio = models.FloatField(default=0)
     descripcion = models.TextField()
-    
+
+    def __str__(self):
+        return f"Producto: {self.nombre}."
 
 class Sable(Producto):
     color_sable = models.CharField(max_length=50)
     color_luz = models.CharField(max_length=50)
     medida = models.CharField(max_length=10)
-
-    def __str__(self):
-        return f"Producto: {self.nombre}."
     
 class Crystal(Producto):
     color = models.CharField(max_length=15)

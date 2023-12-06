@@ -1,0 +1,12 @@
+<!-- esta linea indica que este html hereda su estructura de 'template_padre.html' -->
+{% extends './base.html' %}
+<!-- esto carga los estilos -->
+{% load static %}
+<!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
+{% block MainContent %}
+
+<h1>Nuestros Productos:</h1>
+
+<h3> SABERS </h3>
+<br><br><br>
+{% endblock MainContent %}

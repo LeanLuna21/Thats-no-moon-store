@@ -5,8 +5,12 @@
 <!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
 {% block MainContent %}
 
-<h1>Nuestros Productos:</h1>
+<div class="text-center">
+    <h1>Nuestros Productos:</h1>
 
-<h3> COMPONENTES </h3>
-<br><br><br>
+    <h3> COMPONENTES </h3>
+</div>
+<br><br>
+<a class="btn btn-primary" href="{% url 'nuevo_componente' %}" style="margin: 20px;">Agregar</a>
+
 {% endblock MainContent %}

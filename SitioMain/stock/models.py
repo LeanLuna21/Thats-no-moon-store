@@ -11,9 +11,10 @@ class Producto(models.Model):
         return f"Producto: {self.nombre}."
 
 class Sable(Producto):
+    medida = models.CharField(max_length=10)
     color_sable = models.CharField(max_length=50)
     color_luz = models.CharField(max_length=50)
-    medida = models.CharField(max_length=10)
+    
     
 class Crystal(Producto):
     color = models.CharField(max_length=15)

@@ -4,9 +4,12 @@
 {% load static %}
 <!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
 {% block MainContent %}
+<div class="text-center">
+    <h1>Nuestros Productos:</h1>
 
-<h1>Nuestros Productos:</h1>
+    <h3> SABERS </h3>
+</div>
+<br><br>
+<a class="btn btn-primary" href="{% url 'nuevo_sable' %}" style="margin: 20px;">Agregar</a>
 
-<h3> SABERS </h3>
-<br><br><br>
 {% endblock MainContent %}

@@ -11,12 +11,15 @@
     <h3> KYBER CRYSTALS </h3>
 </div>
 <br><br>
+
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-    <li>{{i}} </li>
-    <p>Color: {{i.color}}cm.</p>
-    <p>${{i.precio}}</p>
+    <li> {{i}} </li>
+    <p> Color: {{i.color}}</p>
+    <p> ${{i.precio}} </p>
+    <p> Stock disponible: {{i.stock}} </p>
+
     <a href=""><button type="button" class="btn btn-sm btn-outline-success">
         Editar </button></a>
    
@@ -26,6 +29,7 @@
    <br><br>
 </div>
 {% endfor %}
+
 <br><br>
 <a class="btn btn-primary" href="{% url 'crear_crystal' %}" style="margin: 20px;">Agregar</a>
 

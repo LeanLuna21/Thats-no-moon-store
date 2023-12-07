@@ -12,7 +12,8 @@ class SableFormulario(forms.Form):
     color_luz= forms.CharField() 
     
 class CrystalFormulario(forms.Form):
-    nombre= forms.CharField(initial="Kyber Crystal") 
+    nombre= forms.CharField()
+    tipo= forms.CharField(initial="Kyber Crystal") 
     color= forms.CharField()
     origen= forms.CharField() 
     stock= forms.IntegerField()

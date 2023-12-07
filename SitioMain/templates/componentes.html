@@ -11,13 +11,15 @@
     <h3> COMPONENTES </h3>
 </div>
 <br><br>
+
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
     <li>{{i}}</li>
-    <p>{{i.nombre}}</p>
     <p>{{i.material}}</p>
     <p>${{i.precio}}</p>
+    <p> Stock disponible: {{i.stock}} </p>
+
     <a href=""><button type="button" class="btn btn-sm btn-outline-success">
         Editar </button></a>
    

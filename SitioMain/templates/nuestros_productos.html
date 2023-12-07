@@ -16,9 +16,10 @@
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
     <h4> Producto: {{producto.nombre}} </h4>
-    <h5>${{producto.stock}}</h5>
-    <p>{{producto.precio}}.</p>
-    <p>{{producto.descripcion}}</p>
+    <h5> ${{producto.precio}} </h5>
+    <p> {{producto.descripcion}} </p>
+    <p> Disponibles: {{producto.stock}} </p>
+    
     <br><br>
 </div>
 {% endfor %}

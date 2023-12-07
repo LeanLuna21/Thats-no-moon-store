@@ -7,6 +7,7 @@ class Producto(models.Model):
     precio = models.FloatField(default=0)
     descripcion = models.TextField()
 
+
 class Sable(Producto):
     medida = models.CharField(max_length=10)
     color_sable = models.CharField(max_length=50)

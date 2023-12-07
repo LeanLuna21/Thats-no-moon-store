@@ -1,0 +1,37 @@
+<!-- esta linea indica que este html hereda su estructura de 'template_padre.html' -->
+{% extends './base-forms.html' %}
+<!-- esto carga los estilos -->
+{% load static %}
+<!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
+{% block MainContent %}
+
+<div class="text-center">
+    <h1>Nuestros Productos:</h1>
+    <br>
+</div>
+<br><br>
+
+
+{% for producto in lista %}
+<div>
+    <!-- imprimo el nombre del prod (como este definido en el modelo) -->
+    <h4> Producto: {{producto.nombre}} </h4>
+    <h5>${{producto.stock}}</h5>
+    <p>{{producto.precio}}.</p>
+    <p>{{producto.descripcion}}</p>
+    <br><br>
+</div>
+{% endfor %}
+
+<br><br>
+
+<h2> Busqueda de Productos: </h2>
+<br>
+<form action="/stock/buscar_producto/" method="GET" id="buscar_producto">
+    <p>Ingrese personaje: <input type="text" name="nombre" ></p>
+    <br>
+    <input type="submit" value="Buscar" name="nombre">
+    <br>
+</form>
+
+{% endblock MainContent %}

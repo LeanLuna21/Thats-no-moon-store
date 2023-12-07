@@ -132,3 +132,19 @@ def eliminar_componente():
 
 
 ################# fx varias #################
+def mostrar_productos(request):
+    lista_productos  = Producto.objects.all()
+   
+    return render(request, 'nuestros_productos.html', {'lista':lista_productos})
+
+def buscar(request):
+    if request.GET['nombre']:
+        nombre = request.GET['nombre'] # Rey
+        # filtra la bbdd 
+        try:
+            producto = Producto.objects.filter(nombre__icontains=nombre)
+            print(producto[0])
+            return render(request,'resultados_busqueda.html',{'producto':producto})
+        except:
+            producto = 0
+            return render(request,'resultados_busqueda.html',{'producto':producto})

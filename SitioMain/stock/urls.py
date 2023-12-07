@@ -2,6 +2,9 @@ from django.urls import path
 from stock.views import *
 
 urlpatterns = [
+    # url a la lista de productos completa
+    path('nuestros_productos/',mostrar_productos, name='nuestros_productos'),
+    path('buscar_producto/',buscar, name='buscar_producto'),
     # urls a las listas de productos (READ)
     path('sabers/',listar_sables,name='sabers'),
     path('crystals/',listar_crystals,name='crystals'),

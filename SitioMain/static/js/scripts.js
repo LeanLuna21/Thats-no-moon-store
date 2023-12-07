@@ -52,3 +52,11 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+document.getElementById('buscar_producto').addEventListener('submit', function (event) {
+    var searchTerm = document.querySelector('input[name="nombre"]').value.trim();
+    if (searchTerm === '') {
+        alert('Por favor, ingrese términos de búsqueda');
+        event.preventDefault(); // Evita que el formulario se envíe
+    }
+});

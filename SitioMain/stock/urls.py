@@ -20,4 +20,6 @@ urlpatterns = [
 
     # urls a eliminar productors (DELETE)
     path('eliminar_sable/<sable_nombre>',eliminar_sable,name='eliminar_sable'),
+    path('eliminar_crystal/<str:crystal_nombre>/<str:crystal_color>/',eliminar_crystal,name='eliminar_crystal'),
+    path('eliminar_componente/<str:componente_tipo>/<str:componente_nombre>/',eliminar_componente,name='eliminar_componente'),
 ]

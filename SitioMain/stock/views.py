@@ -46,8 +46,20 @@ def editar_sable():
     ...
 
 # D
-def eliminar_sable():
-    ...   
+def eliminar_sable(request,sable_nombre): # traemos el parametro tomado al momento de apretar boton eliminar
+    # obtenemos el objeto que coincida con el nombre
+    sable = Sable.objects.get(nombre=sable_nombre)
+    # lo borramos
+    sable.delete()
+    
+    # volvemos a mostrar los productos que quedaron
+    sabers = Sable.objects.all() # trae todos los sabels que quedaron
+
+    # la variable producto es la que se itera en el html
+    contexto= {"productos":sabers} 
+
+    return render(request,"sabers.html",contexto)
+   
 
 
 
@@ -88,8 +100,19 @@ def editar_crystal():
     ...
 
 # D
-def eliminar_crystal():
-    ...  
+def eliminar_crystal(request, crystal_nombre, crystal_color): # traemos el parametro tomado al momento de apretar boton eliminar
+    # obtenemos el objeto que coincida con el nombre
+    crystal = Crystal.objects.get(nombre=crystal_nombre,color=crystal_color)
+    # lo borramos
+    crystal.delete()
+    
+    # volvemos a mostrar los productos que quedaron
+    crystals = Crystal.objects.all() # trae todos los cristales que quedaron
+
+    # la variable producto es la que se itera en el html
+    contexto= {"productos":crystals} 
+
+    return render(request, "crystals.html",contexto)  
 
 ##### CRUD componentes #####
 def listar_componentes(request):
@@ -127,8 +150,19 @@ def editar_componente():
     ...
 
 # D
-def eliminar_componente():
-    ...  
+def eliminar_componente(request, componente_tipo, componente_nombre): # traemos el parametro tomado al momento de apretar boton eliminar
+    # obtenemos el objeto que coincida con el nombre
+    componente = Componente.objects.get(tipo=componente_tipo, nombre=componente_nombre)
+    # lo borramos
+    componente.delete()
+    
+    # volvemos a mostrar los productos que quedaron
+    componentes = Componente.objects.all() # trae todos los componentes que quedaron
+
+    # la variable producto es la que se itera en el html
+    contexto= {"productos":componentes} 
+
+    return render(request, "componentes.html",contexto) 
 
 
 ################# fx varias #################
@@ -141,10 +175,12 @@ def buscar(request):
     if request.GET['nombre']:
         nombre = request.GET['nombre'] # Rey
         # filtra la bbdd 
-        try:
-            producto = Producto.objects.filter(nombre__icontains=nombre)
-            print(producto[0])
-            return render(request,'resultados_busqueda.html',{'producto':producto})
-        except:
-            producto = 0
-            return render(request,'resultados_busqueda.html',{'producto':producto})
+
+        # try:
+        producto = Producto.objects.filter(nombre__icontains=nombre)
+        return render(request,'resultados_busqueda.html',{'producto':producto})
+        # except:
+        #     producto = 0
+        #     return render(request,'resultados_busqueda.html',{'producto':producto})
+
+        # try-except no funciona aca porque siempre filtra, pero a veces devulve coincidencia y si no vacio - pero simpre devuelve

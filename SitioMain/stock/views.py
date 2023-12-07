@@ -10,10 +10,14 @@ from stock.forms import SableFormulario, CrystalFormulario, ComponenteFormulario
 ##### CRUD sabers #####
 # R
 def listar_sables(request):
-    return render(request, './sabers.html')
+    
+    sabers = Sable.objects.all() #trae todos los objects(instancias de la clase) 
+    contexto = {"productos":sabers}  #creamos el diccionario a renderizar -> cada valor se vera 
+    
+    return render(request,'sabers.html', contexto)
 
 # C
-def agregar_sable(request):
+def crear_sable(request):
 
     if request.method == 'POST':
         new_form = SableFormulario(request.POST)
@@ -31,11 +35,11 @@ def agregar_sable(request):
             )
 
             producto.save() # guardamos el objeto creado en la BBDD
-            return render(request,'sabers.html') # recargamos la pag principal
+            return render(request,'index.html') # podemos crear un html de "producto agregado!"
 
     else:
         new_form = SableFormulario()
-        return render(request,'saber_add.html',{"mi_formulario":new_form})
+        return render(request,'saber_create.html',{"mi_formulario":new_form})
 
 # U
 def editar_sable():
@@ -50,10 +54,13 @@ def eliminar_sable():
 
 ##### CRUD crystals #####
 def listar_crystals(request):
-    return render(request, './crystals.html')
+    crystals = Crystal.objects.all() #trae todos los objects(instancias de la clase) 
+    contexto = {"productos":crystals}  #creamos el diccionario a renderizar -> cada valor se vera 
+    
+    return render(request, 'crystals.html', contexto)
 
 # C
-def agregar_crystal(request):
+def crear_crystal(request):
 
     if request.method == 'POST':
         new_form = CrystalFormulario(request.POST)
@@ -62,19 +69,19 @@ def agregar_crystal(request):
 
             producto = Crystal(       
                 nombre=data['nombre'],      # asigno a cada atributo del objeto, el valor almacenado 
-                color= data['color'],
+                color= data['color'],       # en la clave del diccionario "data"
                 origen= data['origen'],
-                stock=data['stock'],        # en la clave del diccionario "data"
+                stock=data['stock'],        
                 precio=data['precio'],
                 descripcion= data['descripcion']
             )
 
             producto.save() # guardamos el objeto creado en la BBDD
-            return render(request,'crystals.html') # recargamos la pag principal
+            return render(request,'index.html') # recargamos la pag principal
 
     else:
         new_form = CrystalFormulario()
-        return render(request,'crystal_add.html',{"mi_formulario":new_form})
+        return render(request,'crystal_create.html',{"mi_formulario":new_form})
 
 # U
 def editar_crystal():
@@ -86,10 +93,13 @@ def eliminar_crystal():
 
 ##### CRUD componentes #####
 def listar_componentes(request):
-    return render(request, './componentes.html')
+    componentes = Componente.objects.all() #trae todos los objects(instancias de la clase) 
+    contexto = {"productos":componentes}  #creamos el diccionario a renderizar -> cada valor se vera 
+    
+    return render(request, 'componentes.html',contexto)
 
 # C
-def agregar_componente(request):
+def crear_componente(request):
 
     if request.method == 'POST':
         new_form = ComponenteFormulario(request.POST)
@@ -106,11 +116,11 @@ def agregar_componente(request):
             )
 
             producto.save() 
-            return render(request,'componentes.html') 
+            return render(request,'index.html') 
 
     else:
         new_form = ComponenteFormulario()
-        return render(request,'component_add.html',{"mi_formulario":new_form})
+        return render(request,'component_create.html',{"mi_formulario":new_form})
 
 # U
 def editar_componente():

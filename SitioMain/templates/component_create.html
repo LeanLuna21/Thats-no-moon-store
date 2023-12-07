@@ -5,13 +5,15 @@
 <!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
 {% block MainContent %}
 
+<h2>Formulario - Ingresar Nuevo Producto: </h2>
+<br>
+
 {% if mi_formulario.error %}
 <p style="color:red"> Datos Invalidos! </p>
 {% endif %}
 
-<h2>Formulario - Ingresar Nuevo Producto: </h2>
-<br>
-<form action="/stock/ingresar_componente/" method="POST"> {% csrf_token %}
+<!-- action-> direccion donde se dirige una vez completo el form -->
+<form action="/stock/crear_componente/" method="POST"> {% csrf_token %}
     <table>
         {{mi_formulario.as_table}}
     </table>

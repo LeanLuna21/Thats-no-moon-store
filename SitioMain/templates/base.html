@@ -43,8 +43,9 @@
                             <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"> MI PERFIL </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button" href=""> LOG IN </button></li>
-                                <li><button class="dropdown-item" type="button" href=""> SIGN UP </button></li>
+                                <li><a class="dropdown-item" type="button" href="{% url 'LogIn' %}"> LOG IN </a></li>
+                                <li><a class="dropdown-item" type="button" href="{% url 'Registro' %}"> SIGN UP </a></li>
+                                <li><a class="dropdown-item" type="button" href="{% url 'LogOut' %}"> LOG OUT </a></li>
                             </ul>
                         </div>
                     </li>

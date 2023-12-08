@@ -11,28 +11,41 @@
 </div>
 <br><br>
 
+<div id="productos-muestra-container">
+    {% for producto in lista %}
+    <div>
+        <!-- imprimo el nombre del prod (como este definido en el modelo) -->
+        <h4> Producto: {{producto.nombre}} </h4>
+        <h5> ${{producto.precio}} </h5>
+        <p> {{producto.descripcion}} </p>
+        <p> Disponibles: {{producto.stock}} </p>
 
-{% for producto in lista %}
-<div>
-    <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-    <h4> Producto: {{producto.nombre}} </h4>
-    <h5> ${{producto.precio}} </h5>
-    <p> {{producto.descripcion}} </p>
-    <p> Disponibles: {{producto.stock}} </p>
-    
+        <br><br>
+    </div>
+    {% endfor %}
+
     <br><br>
+    <aside id="busqueda-container">
+        <h3> Busqueda de Productos: </h3>
+        <br>
+        <form action="/stock/buscar_producto/" method="GET" id="buscar_producto">
+            <p>Ingrese personaje: <input type="text" name="nombre"></p>
+            <br>
+            <input type="submit" value="Buscar" class="btn btn-sm btn-outline-success">
+            <br>
+        </form>
+    </aside>
 </div>
-{% endfor %}
 
-<br><br>
-
-<h2> Busqueda de Productos: </h2>
-<br>
-<form action="/stock/buscar_producto/" method="GET" id="buscar_producto">
-    <p>Ingrese personaje: <input type="text" name="nombre"></p>
-    <br>
-    <input type="submit" value="Buscar" class="btn btn-sm btn-outline-success">
-    <br>
-</form>
-
+<style>
+    #busqueda-container {
+        width: 35vw;
+        height: 30vh;
+        position: fixed;
+        bottom: 5%;
+        right: 0;
+        background-color: auto;
+        padding: 0;
+    }
+</style>
 {% endblock MainContent %}

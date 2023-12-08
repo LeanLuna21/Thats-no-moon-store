@@ -16,7 +16,9 @@ urlpatterns = [
     path('crear_componente/',crear_componente, name='crear_componente'),
 
     # urls a editar productors (UPDATE)
-    path('saber_edit/<sable_nombre>',editar_sable,name='editar_sable'),
+    path('editar_sable/<sable_nombre>',editar_sable,name='editar_sable'),
+    path('editar_crystal/<str:crystal_nombre>/<str:crystal_color>/',editar_crystal,name='editar_crystal'),
+    path('editar_componente/<str:componente_tipo>/<str:componente_nombre>/',editar_componente,name='editar_componente'),
 
     # urls a eliminar productors (DELETE)
     path('eliminar_sable/<sable_nombre>',eliminar_sable,name='eliminar_sable'),

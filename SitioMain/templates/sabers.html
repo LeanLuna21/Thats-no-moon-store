@@ -21,7 +21,7 @@
     <p> {{i.medida}}cm </p>
     <p> Stock disponible: {{i.stock}} </p>
 
-    <a href=""><button type="button" class="btn btn-sm btn-outline-success">
+    <a href="{% url 'editar_sable' i.nombre %}"><button type="button" class="btn btn-sm btn-outline-success">
          Editar </button></a>
     
     <a href="{% url 'eliminar_sable' i.nombre %}"><button type="button" class="btn btn-outline-danger">

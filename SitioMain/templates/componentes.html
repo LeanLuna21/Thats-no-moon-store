@@ -20,7 +20,7 @@
     <p>${{i.precio}}</p>
     <p> Stock disponible: {{i.stock}} </p>
 
-    <a href=""><button type="button" class="btn btn-sm btn-outline-success">
+    <a href="{% url 'editar_componente' i.tipo i.nombre %}"><button type="button" class="btn btn-sm btn-outline-success">
         Editar </button></a>
    
    <a href="{% url 'eliminar_componente' i.tipo i.nombre %}"><button type="button" class="btn btn-outline-danger">

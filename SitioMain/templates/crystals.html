@@ -20,7 +20,7 @@
     <p> ${{i.precio}} </p>
     <p> Stock disponible: {{i.stock}} </p>
 
-    <a href=""><button type="button" class="btn btn-sm btn-outline-success">
+    <a href="{% url 'editar_crystal' i.nombre i.color %}"><button type="button" class="btn btn-sm btn-outline-success">
         Editar </button></a>
    
    <a href="{% url 'eliminar_crystal' i.nombre i.color %}"><button type="button" class="btn btn-outline-danger">

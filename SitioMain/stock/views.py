@@ -42,8 +42,36 @@ def crear_sable(request):
         return render(request,'saber_create.html',{"mi_formulario":new_form})
 
 # U
-def editar_sable():
-    ...
+def editar_sable(request,sable_nombre):
+    # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
+    sable = Sable.objects.get(nombre=sable_nombre)
+    
+    if request.method == 'POST':
+        
+        new_form = SableFormulario(request.POST)
+
+        if new_form.is_valid():
+
+            data = new_form.cleaned_data
+            # llamamos a los campos del objeto y los enlazamos con la informacion traida del formulario
+            sable.nombre=data['nombre']     
+            sable.stock=data['stock']        
+            sable.precio=data['precio']
+            sable.descripcion= data['descripcion']
+            sable.medida= data['medida']
+            sable.color_sable= data['color_sable']
+            sable.color_luz= data['color_luz']
+            
+
+            sable.save() # guardamos los cambios
+            return render(request,'index.html') # regresamos donde deseemos
+
+    # si no ingresa a la fx por el metodo POST, devolvemos el formulario con los campos del form llenos    
+    else:
+        new_form = SableFormulario(initial={"nombre":sable.nombre,"stock":sable.stock,"precio":sable.precio,"descripcion":sable.descripcion,"medida":sable.medida,"color_sable":sable.color_sable,"color_luz":sable.color_luz})
+
+        return render(request,'producto_edit.html',{"mi_formulario":new_form})
+
 
 # D
 def eliminar_sable(request,sable_nombre): # traemos el parametro tomado al momento de apretar boton eliminar
@@ -96,8 +124,34 @@ def crear_crystal(request):
         return render(request,'crystal_create.html',{"mi_formulario":new_form})
 
 # U
-def editar_crystal():
-    ...
+def editar_crystal(request,crystal_nombre, crystal_color):
+    # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
+    crystal = Crystal.objects.get(nombre=crystal_nombre,color=crystal_color)
+    
+    if request.method == 'POST':
+        
+        new_form = CrystalFormulario(request.POST)
+
+        if new_form.is_valid():
+
+            data = new_form.cleaned_data
+            # llamamos a los campos del objeto y los enlazamos con la informacion traida del formulario
+            crystal.nombre=data['nombre'] 
+            crystal.tipo= data['tipo']   
+            crystal.color= data['color']
+            crystal.origen= data['origen'] 
+            crystal.stock=data['stock']        
+            crystal.precio=data['precio']
+            crystal.descripcion= data['descripcion']
+
+            crystal.save() # guardamos los cambios
+            return render(request,'index.html') # regresamos donde deseemos
+
+    # si no ingresa a la fx por el metodo POST, devolvemos el formulario con los campos del form llenos    
+    else:
+        new_form = CrystalFormulario(initial={"nombre":crystal.nombre,"tipo":'Kyber Crystal',"color":crystal.color,"origen":crystal.origen,"stock":crystal.stock,"precio":crystal.precio,"descripcion":crystal.descripcion})
+
+        return render(request,'producto_edit.html',{"mi_formulario":new_form})
 
 # D
 def eliminar_crystal(request, crystal_nombre, crystal_color): # traemos el parametro tomado al momento de apretar boton eliminar
@@ -146,8 +200,34 @@ def crear_componente(request):
         return render(request,'component_create.html',{"mi_formulario":new_form})
 
 # U
-def editar_componente():
-    ...
+def editar_componente(request,componente_tipo, componente_nombre):
+    # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
+    componente = Componente.objects.get(tipo=componente_tipo, nombre=componente_nombre)
+    
+    if request.method == 'POST':
+        
+        new_form = ComponenteFormulario(request.POST)
+
+        if new_form.is_valid():
+
+            data = new_form.cleaned_data
+            # llamamos a los campos del objeto y los enlazamos con la informacion traida del formulario
+            componente.tipo= data['tipo']
+            componente.nombre=data['nombre']
+            componente.material= data['material']     
+            componente.stock=data['stock']        
+            componente.precio=data['precio']
+            componente.descripcion= data['descripcion']
+            
+
+            componente.save() # guardamos los cambios
+            return render(request,'index.html') # regresamos donde deseemos
+
+    # si no ingresa a la fx por el metodo POST, devolvemos el formulario con los campos del form llenos    
+    else:
+        new_form = ComponenteFormulario(initial={"tipo":componente.tipo,"nombre":componente.nombre,"material":componente.material,"stock":componente.stock,"precio":componente.precio,"descripcion":componente.descripcion})
+
+        return render(request,'producto_edit.html',{"mi_formulario":new_form})
 
 # D
 def eliminar_componente(request, componente_tipo, componente_nombre): # traemos el parametro tomado al momento de apretar boton eliminar

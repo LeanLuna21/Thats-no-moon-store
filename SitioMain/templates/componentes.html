@@ -15,7 +15,7 @@
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-    <li>{{i}}</li>
+    <h4>{{i}}</h4>
     <p>{{i.material}}</p>
     <p>${{i.precio}}</p>
     <p> Stock disponible: {{i.stock}} </p>
@@ -31,6 +31,6 @@
 {% endfor %}
 
 <br><br>
-<a class="btn btn-primary" href="{% url 'crear_componente' %}" style="margin: 20px;">Agregar</a>
+<a class="btn btn-primary" href="{% url 'crear_componente' %}" style="margin: 50px 20px;">Agregar</a>
 
 {% endblock MainContent %}

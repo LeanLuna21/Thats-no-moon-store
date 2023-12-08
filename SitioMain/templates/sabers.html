@@ -16,7 +16,7 @@
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-    <li> Producto: {{i.nombre}} </li>
+    <h4> Producto: {{i.nombre}} </h4>
     <p> ${{i.precio}} </p>
     <p> {{i.medida}}cm </p>
     <p> Stock disponible: {{i.stock}} </p>
@@ -32,7 +32,7 @@
 {% endfor %}
 
 <!-- con %url% llamamos a la view del nombre que le pasamos en el doc urls.py -->
-<a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 20px;">Agregar</a>
+<a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 50px 20px;">Agregar</a>
 <br><br>
 
 {% endblock MainContent %}

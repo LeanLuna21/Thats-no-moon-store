@@ -6,26 +6,29 @@
 
 <br><br><br>
 <div class="alert alert-dark" role="alert">
-    
-    {% if producto == 0 %}
-        <span style="color: red;">Producto sin stock!</span>
+
+    {% if producto %}
+
+    {% for p in producto %}
+    <div>
+        <!-- imprimo el nombre del prod (como este definido en el modelo) -->
+        <h4> Producto: {{p.nombre}} </h4>
+        <h5> $ {{p.precio}} </h5>
+        <p> Disponibles: {{p.stock}}. </p>
+        <p> {{p.descripcion}} </p>
+        <br><br>
+    </div>
+    {% endfor %}
+
     {% else %}
-        {% for p in producto %}
-        <div>
-            <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-            <h4> Producto: {{p.nombre}} </h4>
-            <h5> $ {{p.precio}} </h5>
-            <p> Disponibles: {{p.stock}}. </p>
-            <p> {{p.descripcion}} </p>
-            <br><br>
-        </div>
-        {% endfor %}
-    
+
+    <span style="color: red;">Producto sin stock!</span>
+
     {% endif %}
 
 </div>
 <br><br><br>
 <a href="{% url 'nuestros_productos' %}"><button type="button" class="btn btn-sm btn-outline-success">
-    Vovler </button></a>
+        Vovler </button></a>
 
 {% endblock MainContent %}

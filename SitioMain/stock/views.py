@@ -174,13 +174,8 @@ def mostrar_productos(request):
 def buscar(request):
     if request.GET['nombre']:
         nombre = request.GET['nombre'] # Rey
-        # filtra la bbdd 
 
-        # try:
         producto = Producto.objects.filter(nombre__icontains=nombre)
         return render(request,'resultados_busqueda.html',{'producto':producto})
-        # except:
-        #     producto = 0
-        #     return render(request,'resultados_busqueda.html',{'producto':producto})
-
-        # try-except no funciona aca porque siempre filtra, pero a veces devulve coincidencia y si no vacio - pero simpre devuelve
+    else:
+        return render(request,'resultados_busqueda.html')

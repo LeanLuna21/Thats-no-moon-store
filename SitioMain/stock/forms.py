@@ -22,8 +22,8 @@ class CrystalFormulario(forms.Form):
     
     
 class ComponenteFormulario(forms.Form):
-    tipo= forms.CharField() # mostrar listado de tipos?
     nombre= forms.CharField() 
+    tipo= forms.CharField() # mostrar listado de tipos?
     material= forms.CharField() # mostrar listado de materiales?
     stock= forms.IntegerField()
     precio= forms.FloatField()

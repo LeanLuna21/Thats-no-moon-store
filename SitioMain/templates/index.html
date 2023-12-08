@@ -44,10 +44,15 @@
                             <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"> MI PERFIL </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" type="button" href="{% url 'LogIn' %}"> LOG IN </a></li>
-                                <li><a class="dropdown-item" type="button" href="{% url 'Registro' %}"> SIGN UP </a>
+                                {% if not request.user.is_authenticated %}
+                                <li><a class="dropdown-item text-center" type="button" href="{% url 'LogIn' %}"> LOG IN </a></li>
+                                <li><a class="dropdown-item text-center" type="button" href="{% url 'Registro' %}"> SIGN UP </a>
                                 </li>
-                                <li><a class="dropdown-item" type="button" href="{% url 'LogOut' %}"> LOG OUT </a></li>
+                                {% else %}
+                                <li><a class="text-center dropdown-item" href="#">{{request.user.username}}</a></li>
+                                <li><a class="text-center dropdown-item" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                                <li><a class="dropdown-item text-center" type="button" href="{% url 'LogOut' %}"> LOG OUT </a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>

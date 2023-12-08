@@ -1,0 +1,32 @@
+<!-- esta linea indica que este html hereda su estructura de 'template_padre.html' -->
+{% extends './base-forms.html' %}
+<!-- esto carga los estilos -->
+{% load static %}
+<!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
+{% block MainContent %}
+
+<h2>Formulario - Editar Perfil: </h2>
+<h3>Usuario: {{usuario}}</h3>
+<br>
+
+{% if mi_formulario.error %}
+<p style="color:red"> Datos Invalidos! </p>
+{% endif %}
+
+<!-- action-> direccion donde se dirige una vez completo el form -->
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+        {{mi_formulario.as_table}}
+    </table>
+
+    <br>
+    <a class="btn btn-primary" href="{% url 'cambiar_contrasenia' %}" style="padding:10px 50px">Cambiar contraseña</a>
+    <br>
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Guardar" style="padding:10px 50px">
+    <br>
+</form>
+
+{% endblock MainContent %}

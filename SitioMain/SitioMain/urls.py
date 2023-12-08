@@ -7,5 +7,5 @@ urlpatterns = [
     path('', principal, name="inicio"),
     path('stock/',include('stock.urls')),
     # path('ventas/',include('ventas.urls')),
-    # path('personas/',include('personas.urls')),
+    path('personas/',include('personas.urls')),
 ]

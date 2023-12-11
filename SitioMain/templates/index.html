@@ -41,7 +41,9 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'crystals' %}">CRISTALES</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'componentes' %}">COMPONENTES</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'nuestros_productos' %}">PRODUCTOS</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'nuestros_productos' %}">PRODUCTOS</a></li>
+                        {% endif %}
                     {% endif %} 
                     <li class="nav-item">
                         <div class="dropdown-center">

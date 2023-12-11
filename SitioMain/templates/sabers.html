@@ -13,6 +13,10 @@
 
 <br><br>
 
+{% if productos.count == 0 %}
+<h4>Aún no se han agregado lightsabers.</h4>
+{% else %}
+
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
@@ -22,15 +26,15 @@
     <p> Stock disponible: {{i.stock}} </p>
 
     <a href="{% url 'editar_sable' i.nombre %}"><button type="button" class="btn btn-sm btn-outline-success">
-         Editar </button></a>
-    
+            Editar </button></a>
+
     <a href="{% url 'eliminar_sable' i.nombre %}"><button type="button" class="btn btn-outline-danger">
-         Eliminar</button></a>
-    
+            Eliminar</button></a>
+
     <br><br>
 </div>
 {% endfor %}
-
+{% endif %}
 <!-- con %url% llamamos a la view del nombre que le pasamos en el doc urls.py -->
 <a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 50px 20px;">Agregar</a>
 <br><br>

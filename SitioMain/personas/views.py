@@ -20,7 +20,7 @@ def register (request):
         if new_form.is_valid():
             username = new_form.cleaned_data['username']
             new_form.save()
-            return render(request,'index.html',{'mensaje':'Usuario creado EXITOSAMENTE! Te damos la bienvenida Joven Padawan!'})
+            return render(request,'index.html',{'mensaje':f'Usuario creado! Te damos la bienvenida Joven Padawan {username}!'})
 
     else:
         new_form = UserCreationFormCustom()

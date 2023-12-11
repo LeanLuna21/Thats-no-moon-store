@@ -11,6 +11,10 @@
 </div>
 <br><br>
 
+{% if productos.count == 0 %}
+<h4>Lo sentimos... Aún no hay productos disponibles en stock.</h4>
+{% else %}
+
 <div id="productos-muestra-container">
     {% for producto in lista %}
     <div>
@@ -48,4 +52,5 @@
         padding: 0;
     }
 </style>
+{% endif %}
 {% endblock MainContent %}

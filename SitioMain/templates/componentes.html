@@ -12,6 +12,10 @@
 </div>
 <br><br>
 
+{% if productos.count == 0 %}
+<h4>Aún no se han agregado lightsabers.</h4>
+{% else %}
+
 {% for i in productos %}
 <div>
     <!-- imprimo el nombre del prod (como este definido en el modelo) -->
@@ -30,6 +34,7 @@
 </div>
 {% endfor %}
 
+{% endif %}
 <br><br>
 <a class="btn btn-primary" href="{% url 'crear_componente' %}" style="margin: 50px 20px;">Agregar</a>
 

@@ -4,11 +4,22 @@
 
 {% block MainContent %}
 
-<form action='/stock/comprar_producto/' method="post"> {% csrf_token %}
-    <p> Nombre del producto: <input type = "text" name="nombre"></p>
-    <p> Cantidad a comprar: <input type = "number" name="cantidad">  </p>
-    <br>
-    <input class="btn btn-primary" type="submit" value="Comprar" style="padding:10px 30px;margin-top:20px;">
-</form>
+<h1>Detalles del Producto</h1>
+    
+    <p>Nombre del producto: {{ producto}}</p>
+    <p>Cantidad en stock: {{stock}}</p>
+
+    <form action='/stock/comprar_producto/' method="post"> {% csrf_token %}
+        <p> Nombre del producto: 
+            <select name="nombre">
+                {% for producto in productos %}
+                    <option value="{{ producto.nombre }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p> Cantidad a comprar: <input type="number" name="cantidad">  </p>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Comprar" style="padding:10px 30px;margin-top:20px;">
+    </form>
 
 {% endblock MainContent %}

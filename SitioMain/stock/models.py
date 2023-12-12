@@ -6,6 +6,9 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     precio = models.FloatField(default=0)
     descripcion = models.TextField()
+    
+    def __str__(self):
+        return f"Producto: {self.nombre}."
 
 class Sable(Producto):
     medida = models.CharField(max_length=10)

@@ -6,9 +6,11 @@ from stock.models import Producto,Sable,Crystal,Componente
 # conectamos con los formularios
 from stock.forms import SableFormulario, CrystalFormulario, ComponenteFormulario
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 
 ##### CRUD sabers #####
 # R
+@login_required
 def listar_sables(request):
     
     sabers = Sable.objects.all() #trae todos los objects(instancias de la clase) 
@@ -17,6 +19,7 @@ def listar_sables(request):
     return render(request,'sabers.html', contexto)
 
 # C
+@login_required
 def crear_sable(request):
 
     if request.method == 'POST':
@@ -42,6 +45,7 @@ def crear_sable(request):
         return render(request,'saber_create.html',{"mi_formulario":new_form})
 
 # U
+@login_required
 def editar_sable(request,sable_nombre):
     # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
     sable = Sable.objects.get(nombre=sable_nombre)
@@ -74,6 +78,7 @@ def editar_sable(request,sable_nombre):
 
 
 # D
+@login_required
 def eliminar_sable(request,sable_nombre): # traemos el parametro tomado al momento de apretar boton eliminar
     # obtenemos el objeto que coincida con el nombre
     sable = Sable.objects.get(nombre=sable_nombre)
@@ -93,6 +98,7 @@ def eliminar_sable(request,sable_nombre): # traemos el parametro tomado al momen
 
 
 ##### CRUD crystals #####
+@login_required
 def listar_crystals(request):
     crystals = Crystal.objects.all() #trae todos los objects(instancias de la clase) 
     contexto = {"productos":crystals}  #creamos el diccionario a renderizar -> cada valor se vera 
@@ -100,6 +106,7 @@ def listar_crystals(request):
     return render(request, 'crystals.html', contexto)
 
 # C
+@login_required
 def crear_crystal(request):
 
     if request.method == 'POST':
@@ -124,6 +131,7 @@ def crear_crystal(request):
         return render(request,'crystal_create.html',{"mi_formulario":new_form})
 
 # U
+@login_required
 def editar_crystal(request,crystal_nombre, crystal_color):
     # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
     crystal = Crystal.objects.get(nombre=crystal_nombre,color=crystal_color)
@@ -154,6 +162,7 @@ def editar_crystal(request,crystal_nombre, crystal_color):
         return render(request,'producto_edit.html',{"mi_formulario":new_form})
 
 # D
+@login_required
 def eliminar_crystal(request, crystal_nombre, crystal_color): # traemos el parametro tomado al momento de apretar boton eliminar
     # obtenemos el objeto que coincida con el nombre
     crystal = Crystal.objects.get(nombre=crystal_nombre,color=crystal_color)
@@ -169,6 +178,7 @@ def eliminar_crystal(request, crystal_nombre, crystal_color): # traemos el param
     return render(request, "crystals.html",contexto)  
 
 ##### CRUD componentes #####
+@login_required
 def listar_componentes(request):
     componentes = Componente.objects.all() #trae todos los objects(instancias de la clase) 
     contexto = {"productos":componentes}  #creamos el diccionario a renderizar -> cada valor se vera 
@@ -176,6 +186,7 @@ def listar_componentes(request):
     return render(request, 'componentes.html',contexto)
 
 # C
+@login_required
 def crear_componente(request):
 
     if request.method == 'POST':
@@ -200,6 +211,7 @@ def crear_componente(request):
         return render(request,'component_create.html',{"mi_formulario":new_form})
 
 # U
+@login_required
 def editar_componente(request,componente_tipo, componente_nombre):
     # obtenemos el objeto que coincide con el nombre a editar y lo guardamos en una variable
     componente = Componente.objects.get(tipo=componente_tipo, nombre=componente_nombre)
@@ -230,6 +242,7 @@ def editar_componente(request,componente_tipo, componente_nombre):
         return render(request,'producto_edit.html',{"mi_formulario":new_form})
 
 # D
+@login_required
 def eliminar_componente(request, componente_tipo, componente_nombre): # traemos el parametro tomado al momento de apretar boton eliminar
     # obtenemos el objeto que coincida con el nombre
     componente = Componente.objects.get(tipo=componente_tipo, nombre=componente_nombre)
@@ -265,16 +278,16 @@ def buscar(request):
 
 
 def comprar_producto(request):
-# En esta vista estamos buscando un producto en específico y al comprarlo vamos a descontar la cantidad comprada
-# del stock.
+    # En esta vista estamos buscando un producto en específico y al comprarlo vamos a descontar la cantidad comprada
+    # del stock.
     if request.method == "POST":
-        compra = request.POST["nombre"]
-        if compra:
-            producto = Producto.objects.get(nombre=compra)
-            cantidad_compra = int(request.POST["cantidad"])
-            # Modificar el stock del producto y guardarlo en la base de datos:
-            producto.stock = producto.stock - cantidad_compra
-            producto.save()
-            return render(request, 'confirmacion_compra.html', {'producto': producto.nombre, 'stock': producto.stock})
+        busqueda = request.POST["nombre"]
+        producto = Producto.objects.get(nombre=busqueda)
+        cantidad_compra = int(request.POST["cantidad"])
+        # Modificar el stock del producto y guardarlo en la base de datos:
+        producto.cantidad_en_stock = producto.cantidad_en_stock - cantidad_compra
+        producto.save()
+        
+        return render(request, 'comprar_producto.html', {'producto': producto.nombre, 'cantidad_stock': producto.cantidad_en_stock})
     
     return render(request, 'comprar_producto.html')

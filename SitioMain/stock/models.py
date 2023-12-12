@@ -22,7 +22,7 @@ class Crystal(Producto):
     # https://starwars.fandom.com/wiki/Kyber_crystal
 
     def __str__(self):
-        return f"Producto: {self.tipo} {self.nombre}."
+        return f"Producto: {self.tipo} {self.nombre} {self.color}."
 class Componente(Producto):
     tipo = models.CharField(max_length=15)  # empuñadura / emisor / etc
     material = models.CharField(max_length=50)  # aleacion / galvanizado / mate / etc

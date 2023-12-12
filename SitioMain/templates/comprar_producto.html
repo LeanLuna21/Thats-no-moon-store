@@ -1,0 +1,14 @@
+{% extends './base-forms.html' %}
+
+{% load static %}
+
+{% block MainContent %}
+
+<form action='/stock/comprar_producto/' method="post"> {% csrf_token %}
+    <p> Nombre del producto: <input type = "text" name="nombre"></p>
+    <p> Cantidad a comprar: <input type = "number" name="cantidad">  </p>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Comprar" style="padding:10px 30px;margin-top:20px;">
+</form>
+
+{% endblock MainContent %}

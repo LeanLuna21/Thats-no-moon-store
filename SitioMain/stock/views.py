@@ -247,15 +247,34 @@ def eliminar_componente(request, componente_tipo, componente_nombre): # traemos 
 
 ################# fx varias #################
 def mostrar_productos(request):
-    lista_productos  = Producto.objects.all()
-   
-    return render(request, 'nuestros_productos.html', {'lista':lista_productos})
+    lista_productos  = Sable.objects.all() # esto trae un diccionario 
+    lista_productos2  = Crystal.objects.all()
+    lista_productos3  = Componente.objects.all()
+    return render(request, 'nuestros_productos.html', {'lista':[lista_productos,lista_productos2,lista_productos3]})
 
 def buscar(request):
     if request.GET['nombre']:
         nombre = request.GET['nombre'] # Rey
-
-        producto = Producto.objects.filter(nombre__icontains=nombre)
-        return render(request,'resultados_busqueda.html',{'producto':producto})
+        productos1 = Sable.objects.filter(nombre__icontains=nombre)
+        productos2 = Crystal.objects.filter(nombre__icontains=nombre)
+        productos3 = Componente.objects.filter(nombre__icontains=nombre)
+        print({'producto':[productos1,productos2,productos3]})
+        return render(request,'resultados_busqueda.html',{'producto':[productos1,productos2,productos3]})
     else:
         return render(request,'resultados_busqueda.html')
+
+
+def comprar_producto(request):
+# En esta vista estamos buscando un producto en específico y al comprarlo vamos a descontar la cantidad comprada
+# del stock.
+    if request.method == "POST":
+        compra = request.POST["nombre"]
+        if compra:
+            producto = Producto.objects.get(nombre=compra)
+            cantidad_compra = int(request.POST["cantidad"])
+            # Modificar el stock del producto y guardarlo en la base de datos:
+            producto.stock = producto.stock - cantidad_compra
+            producto.save()
+            return render(request, 'confirmacion_compra.html', {'producto': producto.nombre, 'stock': producto.stock})
+    
+    return render(request, 'comprar_producto.html')

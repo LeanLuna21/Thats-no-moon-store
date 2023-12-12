@@ -8,8 +8,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import PasswordChangeView
 # este modulo lo usaremos para obligar al usuario a logearse
 from django.contrib.auth.mixins import LoginRequiredMixin
-# este modulo se usa para usar las VIEW de django por defecto
 from django.urls import reverse_lazy
+# este modulo se usa para usar las VIEW de django por defecto
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 # VIEWS para registrarse e ingresar. (CREATE)
 

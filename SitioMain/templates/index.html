@@ -41,9 +41,9 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'crystals' %}">CRISTALES</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'componentes' %}">COMPONENTES</a></li>
                     {% else %}
-                        {% if request.user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'nuestros_productos' %}">PRODUCTOS</a></li>
-                        {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'nuestros_productos' %}">PRODUCTOS</a></li>
+                    {% endif %}
                     {% endif %} 
                     <li class="nav-item">
                         <div class="dropdown-center">
@@ -55,8 +55,7 @@
                                 <li><a class="dropdown-item text-center" type="button" href="{% url 'Registro' %}"> SIGN UP </a>
                                 </li>
                                 {% else %}
-                                <li><a class="text-center dropdown-item" href="#">{{request.user.username}}</a></li>
-                                <li><a class="text-center dropdown-item" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                                <li><a class="text-center dropdown-item" href="{% url 'ver perfil' %}">{{request.user.username}}</a></li>
                                 <li><a class="dropdown-item text-center" type="button" href="{% url 'LogOut' %}"> LOG OUT </a></li>
                                 {% endif %}
                             </ul>

@@ -23,6 +23,7 @@ class UserEditForm (UserChangeForm):
     email = forms.EmailField(label='Ingrese su email ')
     last_name = forms.CharField(label='Apellido')
     first_name = forms.CharField(label='Nombre')
+    edad = forms.IntegerField(label='Edad')
 
     class Meta():
         model = User

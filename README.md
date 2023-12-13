@@ -1,30 +1,33 @@
 # ThatsNoMoonStore
-Tienda online de LightSabers
+## Tienda online de LightSabers
 
 En esta simulacion de tienda. Los usuarios podran registrarse, para comprar diferentes productos: Lightsabers, Cristales para sus lightsabers, o Componentes para construir sus propios sables. 
 
 El sitio esta diseñado para mostrar toda la lista de productos, y poder buscar algun personaje que el usuario desee; lo cual arrojara como resultado el stock que coincida o un mensaje de "no hay stock".
 
-Los usuarios pueden:
-    - registrarse:
-        -> caso de prueba
-        - usuario: UsuarioFalso
-        - password: Usuario1234
+Hasta el momento hay dos usuarios de prueba registrados: el ADMIN y un usuario random que no es parte del staff
+Para acceder como admin:
+    user: admin
+    passw: admincontra1
+Para probar la vista desde otro usuario pueden ingresar con:
+    user: usuario1
+    passw: userpass123
 
-    - editar sus datos de perfil: email/nombre/apellido
+Si no, pueden registrarse con un usuario propio.
 
-
-Si al loguearse, los datos del usuario coinciden con los del admin, la vista cambia:
-    - en la Navbar se muestran los diferentes productos disponibles y cada link te lleva a la lista de todos los productos de ese tipo, junto con las opciones de AGREGAR, EDITAR y ELIMINAR producto. 
-
-AdminUser:
-    - lea
-    - lean123456
+Al loguearse con el usuario admin, la vista del sitio cambia (en la navbar se mostraran cada modelo de productos, cada uno con su detalle, y botones para agregar, editar, o borrar registros)
 
 La idea es que solo el admin pueda realizar cambios en la BBDD.
 
-# queda agregar
-- lista de usuarios para el admin
-- ventas/transacciones
-# corregir
-- funcion cambiar contraseña
+Luego, desde el boton perfil, cada usuario puede crearse un perfil, o editar el que ya tenga creado.
+Podran ahi agregar imagenes, modificar sus datos y cambiar su contraseña si asi lo desean. 
+
+COSAS POR MEJORAR
+    -   primero que nada, habria que agregar el tema de manejo de errores para que, por ej, el stock no se muestre negativo; o directamente no se muestre el producto sin stock
+    -   que al agregar un producto te redirija a una lista actualizada en lugar de al index.html (no logro hacerlo - al agregar el producto me redirige a la lista de productos pero vacia.)
+    -   boton comprar producto deberia generar una instancia de Transaccion donde se guarden los datos del cliente, el producto, la cantidad y el precio
+
+ERRORES POR CORREGIR
+- en boton buscar - si no hay coincidencias, mostrar que no hay stock (se muestra vacio).
+- en editar perfil - mje de contraseña 'success' o 'fail' se muestra varias veces.
+

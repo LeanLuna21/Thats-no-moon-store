@@ -25,7 +25,7 @@ urlpatterns = [
     path('eliminar_crystal/<str:crystal_nombre>/<str:crystal_color>/',eliminar_crystal,name='eliminar_crystal'),
     path('eliminar_componente/<str:componente_tipo>/<str:componente_nombre>/',eliminar_componente,name='eliminar_componente'),
     
-    path('comprar_producto/', comprar_producto,name='comprar_producto')
+    path('comprar_producto/<prod_nombre>', comprar_producto,name='comprar_producto')
     
     
     

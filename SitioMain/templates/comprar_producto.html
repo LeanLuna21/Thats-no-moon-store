@@ -5,20 +5,14 @@
 {% block MainContent %}
 
 <h1>Detalles del Producto</h1>
+    <br><br>
     
-    <p>Nombre del producto: {{ producto}}</p>
-    <p>Cantidad en stock: {{stock}}</p>
-
-    <form action='/stock/comprar_producto/' method="post"> {% csrf_token %}
-        <p> Nombre del producto: 
-            <select name="nombre">
-                {% for producto in productos %}
-                    <option value="{{ producto.nombre }}">{{ producto.nombre }}</option>
-                {% endfor %}
-            </select>
-        </p>
+    <form action='' method="post"> {% csrf_token %}
+        <p style="display: inline;">Nombre del producto: <h5 style="display: inline;" id="nombre"> {{ producto }} </h5></p>
+        <p style="display: inline;">Cantidad en stock: <h5 style="display: inline;"> {{ stock }} </h5></p>
+        <p> Precio unitario: ${{precio}} </p>
         <p> Cantidad a comprar: <input type="number" name="cantidad">  </p>
-        <br>
+        <br><br>
         <input class="btn btn-primary" type="submit" value="Comprar" style="padding:10px 30px;margin-top:20px;">
     </form>
 

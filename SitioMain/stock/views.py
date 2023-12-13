@@ -277,17 +277,19 @@ def buscar(request):
         return render(request,'resultados_busqueda.html')
 
 
-def comprar_producto(request):
+def comprar_producto(request,prod_nombre):
     # En esta vista estamos buscando un producto en específico y al comprarlo vamos a descontar la cantidad comprada
     # del stock.
     if request.method == "POST":
-        busqueda = request.POST["nombre"]
-        producto = Producto.objects.get(nombre=busqueda)
+        producto = Producto.objects.get(nombre=prod_nombre)
         cantidad_compra = int(request.POST["cantidad"])
         # Modificar el stock del producto y guardarlo en la base de datos:
-        producto.cantidad_en_stock = producto.cantidad_en_stock - cantidad_compra
+        producto.stock = producto.stock - cantidad_compra
         producto.save()
-        
-        return render(request, 'comprar_producto.html', {'producto': producto.nombre, 'cantidad_stock': producto.cantidad_en_stock})
+        return render(request, 'confirmacion_compra.html', {'producto': producto.nombre})
     
-    return render(request, 'comprar_producto.html')
+    else:
+        producto = Producto.objects.get(nombre=prod_nombre)
+        precio = producto.precio 
+        return render(request, 'comprar_producto.html',{'producto':prod_nombre,'stock': producto.stock,'precio':precio})
+

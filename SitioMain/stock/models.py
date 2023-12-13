@@ -19,7 +19,7 @@ class Sable(Producto):
         return f"Producto: {self.nombre}."
     
 class Crystal(Producto):
-    tipo= models.CharField(max_length=15)
+    tipo = models.CharField(max_length=15)
     color = models.CharField(max_length=15)
     origen = models.CharField(max_length=20)
     # https://starwars.fandom.com/wiki/Kyber_crystal

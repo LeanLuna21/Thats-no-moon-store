@@ -13,7 +13,7 @@
 <br><br>
 
 {% if productos.count == 0 %}
-<h4>Aún no se han agregado lightsabers.</h4>
+<h4>Aún no se han agregado componentes de lightsabers.</h4>
 {% else %}
 
 {% for i in productos %}
@@ -30,12 +30,12 @@
    <a href="{% url 'eliminar_componente' i.tipo i.nombre %}"><button type="button" class="btn btn-outline-danger">
         Eliminar</button></a>
    
-   <br><br>
+    <br><br><br>
 </div>
 {% endfor %}
 
 {% endif %}
-<br><br>
+<br>
 <a class="btn btn-primary" href="{% url 'crear_componente' %}" style="margin: 50px 20px;">Agregar</a>
 
 {% endblock MainContent %}

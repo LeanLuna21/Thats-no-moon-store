@@ -24,8 +24,8 @@ Podran ahi agregar imagenes, modificar sus datos y cambiar su contraseña si asi
 
 COSAS POR MEJORAR
     -   primero que nada, habria que agregar el tema de manejo de errores para que, por ej, el stock no se muestre negativo; o directamente no se muestre el producto sin stock
-    -   que al agregar un producto te redirija a una lista actualizada en lugar de al index.html (no logro hacerlo - al agregar el producto me redirige a la lista de productos pero vacia.)
-    -   boton comprar producto deberia generar una instancia de Transaccion donde se guarden los datos del cliente, el producto, la cantidad y el precio
+    -   boton 'comprar producto' deberia generar una instancia de Transaccion donde se guarden los datos del cliente, el producto, la cantidad y el precio
+    -   cada producto podria mostrarse con una imagen para hacer mas atractivo el sitio
 
 ERRORES POR CORREGIR
 - en boton buscar - si no hay coincidencias, mostrar que no hay stock (se muestra vacio).

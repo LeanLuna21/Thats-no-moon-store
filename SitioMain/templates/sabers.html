@@ -31,12 +31,12 @@
     <a href="{% url 'eliminar_sable' i.nombre %}"><button type="button" class="btn btn-outline-danger">
             Eliminar</button></a>
 
-    <br><br>
+    <br><br><br>
 </div>
 {% endfor %}
 {% endif %}
 <!-- con %url% llamamos a la view del nombre que le pasamos en el doc urls.py -->
 <a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 50px 20px;">Agregar</a>
-<br><br>
+<br>
 
 {% endblock MainContent %}

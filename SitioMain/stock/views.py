@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
 
 # conectamos con los productos
 from stock.models import Producto,Sable,Crystal,Componente
@@ -8,7 +7,7 @@ from stock.forms import SableFormulario, CrystalFormulario, ComponenteFormulario
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 
-##### CRUD sabers #####
+######################### CRUD sabers #########################
 # R
 @login_required
 def listar_sables(request):
@@ -38,7 +37,8 @@ def crear_sable(request):
             )
 
             producto.save() # guardamos el objeto creado en la BBDD
-            return render(request,'index.html') # podemos crear un html de "producto agregado!"
+            return redirect('sabers') # podemos crear un html de "producto agregado!"
+        #en este caso redirigimos a la pestaña de lista de sables
 
     else:
         new_form = SableFormulario()
@@ -97,7 +97,7 @@ def eliminar_sable(request,sable_nombre): # traemos el parametro tomado al momen
 
 
 
-##### CRUD crystals #####
+######################## CRUD crystals ###########################
 @login_required
 def listar_crystals(request):
     crystals = Crystal.objects.all() #trae todos los objects(instancias de la clase) 
@@ -116,6 +116,7 @@ def crear_crystal(request):
 
             producto = Crystal(       
                 nombre=data['nombre'],      # asigno a cada atributo del objeto, el valor almacenado 
+                tipo=data['tipo'],
                 color= data['color'],       # en la clave del diccionario "data"
                 origen= data['origen'],
                 stock=data['stock'],        
@@ -124,7 +125,7 @@ def crear_crystal(request):
             )
 
             producto.save() # guardamos el objeto creado en la BBDD
-            return render(request,'index.html') # recargamos la pag principal
+            return redirect('crystals') # recargamos la pag de lista cristales
 
     else:
         new_form = CrystalFormulario()
@@ -177,7 +178,9 @@ def eliminar_crystal(request, crystal_nombre, crystal_color): # traemos el param
 
     return render(request, "crystals.html",contexto)  
 
-##### CRUD componentes #####
+
+
+####################### CRUD componentes ##########################
 @login_required
 def listar_componentes(request):
     componentes = Componente.objects.all() #trae todos los objects(instancias de la clase) 
@@ -204,7 +207,7 @@ def crear_componente(request):
             )
 
             producto.save() 
-            return render(request,'index.html') 
+            return redirect('componentes')
 
     else:
         new_form = ComponenteFormulario()

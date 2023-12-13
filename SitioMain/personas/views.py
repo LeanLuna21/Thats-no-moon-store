@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 # importar forms para registro y login
-from personas.models import PerfilUsuario, Cliente, Transaccion
-from personas.forms import UserCreationFormCustom, UserEditForm
+from personas.models import PerfilUsuario, Cliente, Transaccion 
+from personas.forms import UserCreationFormCustom, UserEditForm,TransaccionFormCustom
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 # este modulo lo usaremos para cambiar la contraseña
@@ -110,7 +110,7 @@ class TransaccionCreateView(CreateView):
     model = Transaccion
     template_name = "crear_venta.html"
     success_url = reverse_lazy('listar_ventas')
-    fields = ['nro_transaccion', 'cliente', 'producto', 'cantidad' ,'precio_total', 'fecha_venta']
+    form_class = TransaccionFormCustom
 
 class TransaccionUpdateView(UpdateView):
     model = Transaccion

@@ -6,6 +6,12 @@
 
 <h1 style="display: inline;padding-right: 30px; vertical-align: middle;">Lista Ventas</h1> <a href="{% url 'ventas crear' %}"><button type="button" class="btn btn-sm btn-outline-primary">Nueva</button></a>
 <br><br>
+
+{% if ventas.count == 0 %}
+<br><br>
+<h4>Aún no se han registrado ventas...</h4>
+<br><br><br><br><br>
+{% else %}
 {% for venta in ventas %}
 <div id="productos-muestra-container">
     <div>
@@ -26,5 +32,6 @@
 </div>
 <br><br><br>
 {% endfor %}
+{% endif %}
 
 {% endblock %}

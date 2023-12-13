@@ -9,8 +9,10 @@
 <h3>Usuario: {{request.user.perfil.usuario}}</h3>
 <br>
 
-<!-- action-> direccion donde se dirige una vez completo el form -->
-<form action="" method="POST"> {% csrf_token %}
+<!-- Enctype define tipo de codificación que se le dará a los archivos
+    al enviarlos en el request porque no se pueden enviar en su
+    formato original. -->
+<form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
     <table>
         {{form.as_table}}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 # importar forms para registro y login
-from personas.models import PerfilUsuario
+from personas.models import PerfilUsuario, Cliente, Transaccion
 from personas.forms import UserCreationFormCustom, UserEditForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
@@ -99,3 +99,31 @@ def perfil_usuario(request):
     except:
         return redirect('crear perfil')
     
+###########################################################  
+    #  Vistas VENTAS (transacciones)
+class TransaccionListView(ListView):
+    model = Transaccion
+    context_object_name = "ventas"
+    template_name = "listar_ventas.html"
+
+class TransaccionCreateView(CreateView):
+    model = Transaccion
+    template_name = "crear_venta.html"
+    success_url = reverse_lazy('listar_ventas')
+    fields = ['nro_transaccion', 'cliente', 'producto', 'cantidad' ,'precio_total', 'fecha_venta']
+
+class TransaccionUpdateView(UpdateView):
+    model = Transaccion
+    template_name = "editar_ventas.html"
+    success_url = reverse_lazy("listar_ventas")
+    fields = ['producto', 'cantidad','precio_total','fecha_venta']
+
+class TransaccionDeleteView(DeleteView):
+    model = Transaccion
+    template_name = "eliminar_ventas.html"
+    success_url = reverse_lazy("listar_ventas")
+
+class TransaccionDetailView(DetailView):
+    model = Transaccion
+    template_name = "detalle_ventas.html"
+    success_url = reverse_lazy("listar_ventas")

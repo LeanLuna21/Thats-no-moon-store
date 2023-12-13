@@ -1,0 +1,16 @@
+{% extends './base-forms.html' %}
+
+{% load static %}
+
+{% block MainContent %}
+
+<h2> ¡ATENCION! </h2>
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>¿¿Estas seguro que deseas eliminar la venta nro "{{transaccion.nro_transaccion}}" del cliente: "{{transaccion.cliente.nombre}}"??</p>
+    <br><br><br>
+    <input type="submit" value="Eliminar" class="btn btn-danger">
+</form>
+
+{% endblock %}

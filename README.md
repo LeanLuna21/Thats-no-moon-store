@@ -26,6 +26,7 @@ COSAS POR MEJORAR
     -   primero que nada, habria que agregar el tema de manejo de errores para que, por ej, el stock no se muestre negativo; o directamente no se muestre el producto sin stock
     -   boton 'comprar producto' deberia generar una instancia de Transaccion donde se guarden los datos del cliente, el producto, la cantidad y el precio
     -   cada producto podria mostrarse con una imagen para hacer mas atractivo el sitio
+    -   por ultimo el orden en las apps se podria mejorar montones: organizar los html en carpetas, por ej...
 
 ERRORES POR CORREGIR
 - en boton buscar - si no hay coincidencias, mostrar que no hay stock (se muestra vacio).

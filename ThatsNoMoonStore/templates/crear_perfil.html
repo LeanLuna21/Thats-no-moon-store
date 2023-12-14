@@ -1,0 +1,23 @@
+<!-- esta linea indica que este html hereda su estructura de 'template_padre.html' -->
+{% extends './base-forms.html' %}
+<!-- esto carga los estilos -->
+{% load static %}
+<!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
+{% block MainContent %}
+
+<h2> Crear Perfil de Usuario: </h2>
+<br>
+
+<!-- action-> direccion donde se dirige una vez completo el form -->
+<form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+
+    <br>
+    <button class="btn btn-primary" type="submit" style="padding:10px 50px">Crear Perfil</button>
+    <br>
+</form>
+
+{% endblock  %}

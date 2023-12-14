@@ -1,0 +1,41 @@
+<!-- esta linea indica que este html hereda su estructura de 'template_padre.html' -->
+{% extends './base-forms.html' %}
+<!-- esto carga los estilos -->
+{% load static %}
+<!-- ingresamos el contenido que cambiara en las distintas paginas 'hijas' -->
+{% block MainContent %}
+
+<h2>Password Update</h2>
+<br>
+
+{% if mi_formulario.error %}
+<p style="color:red"> Datos Invalidos! </p>
+{% endif %}
+
+
+<form method="POST"> {% csrf_token %}
+
+    {{ form.old_password.errors }}
+    <label for="id_old_password">Contraseña actual:</label>
+    {{ form.old_password }}
+    <br>
+    <br>
+
+    {{ form.new_password1.errors }}
+    <label for="id_new_password1">Nueva contraseña:</label>
+    {{ form.new_password1 }}
+    <br>
+    <br>
+
+    {{ form.new_password2.errors }}
+    <label for="id_new_password2">Confirmar nueva contraseña:</label>
+    {{ form.new_password2 }}
+    <br>
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Cambiar" style="padding:10px 50px">
+    <br>
+
+</form>
+
+{% endblock MainContent %}

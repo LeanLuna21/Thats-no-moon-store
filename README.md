@@ -2,11 +2,12 @@
 ## Tienda online de LightSabers
 
 Para poder ejecutar el proyecto será necesario:
-1 - Hacer una copia de este repositorio o en su defecto descargarlo como archivo comprimido ZIP.
-2 - Descomprimirlo y abrirlo con VSC o en el entorno de preferencia.
-3 - Abrir una terminal e instalar los paquetes necesarios (se recomienda crear un virtual environment previamente) ejecutando el comando 'pip install -r requirements.txt' dentro de la carpeta donde se encuentre ese archivo.
-4 - Dirigirse a la carpeta donde esta almacenado el documento "manage.py" (/SitioMain)
-5 - Ejecutar el comando 'python manage.py runserver' para ver el proyecto
+
+- 1 - Hacer una copia de este repositorio o en su defecto descargarlo como archivo comprimido ZIP.
+- 2 - Descomprimirlo y abrirlo con VSC o en el entorno de preferencia.
+- 3 - Abrir una terminal e instalar los paquetes necesarios (se recomienda crear un virtual environment previamente) ejecutando el comando 'pip install -r requirements.txt' dentro de la carpeta donde se encuentre ese archivo.
+- 4 - Dirigirse a la carpeta donde esta almacenado el documento "manage.py" (/SitioMain)
+- 5 - Ejecutar el comando 'python manage.py runserver' para ver el proyecto
 
 Una vez realizados estos pasos debería mostrarse el sitio en el navegador. 
 
@@ -30,6 +31,9 @@ La idea es que solo el admin pueda realizar cambios en la BBDD.
 
 Luego, desde el boton perfil, cada usuario puede crearse un perfil, o editar el que ya tenga creado.
 Podran ahi agregar imagenes, modificar sus datos y cambiar su contraseña si asi lo desean. 
+
+PARA VER COMO FUNCIONA EL SITIO:
+https://www.youtube.com/watch?v=p1VN8ZjaFQ0&ab_channel=LeandroLuna
 
 COSAS POR MEJORAR:
 - primero que nada, habria que agregar el tema de manejo de errores para que, por ej, el stock no se muestre negativo; o directamente no se muestre el producto sin stock

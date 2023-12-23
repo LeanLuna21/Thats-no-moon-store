@@ -1,6 +1,15 @@
 # ThatsNoMoonStore
 ## Tienda online de LightSabers
 
+Para poder ejecutar el proyecto será necesario:
+1 - Hacer una copia de este repositorio o en su defecto descargarlo como archivo comprimido ZIP.
+2 - Descomprimirlo y abrirlo con VSC o en el entorno de preferencia.
+3 - Abrir una terminal e instalar los paquetes necesarios (se recomienda crear un virtual environment previamente) ejecutando el comando 'pip install -r requirements.txt' dentro de la carpeta donde se encuentre ese archivo.
+4 - Dirigirse a la carpeta donde esta almacenado el documento "manage.py" (/SitioMain)
+5 - Ejecutar el comando 'python manage.py runserver' para ver el proyecto
+
+Una vez realizados estos pasos debería mostrarse el sitio en el navegador. 
+
 En esta simulacion de tienda. Los usuarios podran registrarse, para comprar diferentes productos: Lightsabers, Cristales para sus lightsabers, o Componentes para construir sus propios sables. 
 
 El sitio esta diseñado para mostrar toda la lista de productos, y poder buscar algun personaje que el usuario desee; lo cual arrojara como resultado el stock que coincida o un mensaje de "no hay stock".

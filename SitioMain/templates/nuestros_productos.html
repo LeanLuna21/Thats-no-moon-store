@@ -21,6 +21,7 @@
         <div>
             <!-- imprimo el nombre del prod (como este definido en el modelo) -->
             <h4> Producto: {{producto.tipo}} {{producto.nombre}} {{producto.color}}</h4>
+            <img style="width: 200px;" src={{producto.photo_url}} alt=sable-foto>
             <h5> ${{producto.precio}} </h5>
             <p> {{producto.descripcion}} </p>
             <p> Disponibles: {{producto.stock}} </p>

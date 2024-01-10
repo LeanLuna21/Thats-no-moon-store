@@ -17,26 +17,32 @@
 <h4>Aún no se han agregado lightsabers.</h4>
 {% else %}
 
+<div style=" display: flex; flex-wrap: wrap;">
 {% for i in productos %}
-<div>
-    <!-- imprimo el nombre del prod (como este definido en el modelo) -->
-    <h4> Producto: {{i.nombre}} </h4>
-    <p> ${{i.precio}} </p>
-    <p> {{i.medida}}cm </p>
-    <p> Stock disponible: {{i.stock}} </p>
 
-    <a href="{% url 'editar_sable' i.nombre %}"><button type="button" class="btn btn-sm btn-outline-success">
-            Editar </button></a>
 
-    <a href="{% url 'eliminar_sable' i.nombre %}"><button type="button" class="btn btn-outline-danger">
-            Eliminar</button></a>
+    <div style=" width: 300px; margin: 20px 30px; border-bottom: 2px solid rgba(255, 255, 255, 0.697);">
+        <!-- imprimo el nombre del prod (como este definido en el modelo) -->
+        <h4> Producto: {{i.nombre}} </h4>
+        <p> ${{i.precio}} </p>
+        <p> {{i.medida}}cm </p>
+        <p> Stock disponible: {{i.stock}} </p>
 
-    <br><br><br>
-</div>
+        <a href="{% url 'editar_sable' i.nombre %}"><button type="button" class="btn btn-sm btn-outline-success">
+                Editar </button></a>
+
+        <a href="{% url 'eliminar_sable' i.nombre %}"><button type="button" class="btn btn-outline-danger">
+                Eliminar</button></a>
+
+        <br><br><br>
+    </div>
+
 {% endfor %}
+</div>
+
 {% endif %}
 <!-- con %url% llamamos a la view del nombre que le pasamos en el doc urls.py -->
-<a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 50px 20px;">Agregar</a>
+<a class="btn btn-primary" href="{% url 'crear_sable' %}" style="margin: 50px 20px;">Agregar sable</a>
 <br>
 
 {% endblock MainContent %}

@@ -6,9 +6,14 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     precio = models.FloatField(default=0)
     descripcion = models.TextField()
+    imagen = models.ImageField(upload_to="images",null=True,blank=True)
     
     def __str__(self):
         return f"Producto: {self.nombre}."
+    
+    def photo_url(self):
+        if self.imagen and hasattr(self.imagen, 'url'):
+            return self.imagen.url
 
 class Sable(Producto):
     medida = models.CharField(max_length=10)

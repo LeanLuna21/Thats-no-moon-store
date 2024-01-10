@@ -44,4 +44,5 @@ COSAS POR MEJORAR:
 ERRORES POR CORREGIR:
 - en boton buscar - si no hay coincidencias, mostrar que no hay stock (se muestra vacio).
 - en editar perfil - mje de contraseña 'success' o 'fail' se muestra varias veces.
+- las imagenes en los productos solo pueden cargarse desde el sitio de admin django, no logro hacer que se puedan subir desde el html de saber_create (ImageField en form esta fallando?)
 
